@@ -3,16 +3,16 @@ import TopSection from "./components/TopSection"
 import BottomSection from "./components/BottomSection"
 
 export default function App() {
-	const [playerName, setPlayerName] = React.useState("")
-	const [submitted, setSubmitted] = React.useState(false)
-    
-    function handleSubmit(e) {
-		e.preventDefault()
-		setSubmitted(true)
-		setPlayerName(prevName => prevName.trim() + " The Magnificent!")
-	}
-	
-/* Challenge
+  const [playerName, setPlayerName] = React.useState("")
+  const [submitted, setSubmitted] = React.useState(false)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setSubmitted(true)
+    setPlayerName((prevName) => prevName.trim() + " The Magnificent!")
+  }
+
+  /* Challenge
 
 	The hero of this RPG needs a name! Your task is to set up an input element as follows:
 	
@@ -34,17 +34,25 @@ export default function App() {
 		   in your character's name and click "Continue"!
 */
 
-	return (
-		<form className="form" onSubmit={handleSubmit}>
-            <TopSection submitted={submitted} />
-            
-			{/*-----Your input below!----------*/}
-			
-			
-			
-			{/*-----Your input above!----------*/}
-            
-            <BottomSection submitted={submitted} playerName={playerName} />
-		</form>
-	)
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <TopSection submitted={submitted} />
+
+      {/*-----Your input below!----------*/}
+
+      <input
+        className="name-input"
+        type="text"
+        maxLength="16"
+        placeholder="Enter Your Character's Name"
+        required
+        value={playerName}
+        onChange={(e) => setPlayerName((prevName) => e.target.value)}
+      />
+
+      {/*-----Your input above!----------*/}
+
+      <BottomSection submitted={submitted} playerName={playerName} />
+    </form>
+  )
 }
