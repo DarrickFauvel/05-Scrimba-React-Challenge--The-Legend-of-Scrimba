@@ -34,6 +34,10 @@ export default function App() {
 		   in your character's name and click "Continue"!
 */
 
+  const handleChange = (e) => {
+    setPlayerName(e.target.value)
+  }
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <TopSection submitted={submitted} />
@@ -47,7 +51,7 @@ export default function App() {
         placeholder="Enter Your Character's Name"
         required
         value={playerName}
-        onChange={(e) => setPlayerName((prevName) => e.target.value)}
+        onChange={handleChange}
         disabled={submitted}
       />
 
