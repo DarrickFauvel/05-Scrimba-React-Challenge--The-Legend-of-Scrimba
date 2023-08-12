@@ -48,6 +48,7 @@ export default function App() {
         required
         value={playerName}
         onChange={(e) => setPlayerName((prevName) => e.target.value)}
+        disabled={submitted ? true : false}
       />
 
       {/*-----Your input above!----------*/}
